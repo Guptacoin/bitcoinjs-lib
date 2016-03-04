@@ -134,6 +134,7 @@ var networks = {
     pubKeyHash: 0x17,
     scriptHash: 0x05,
     wif: 0xB0,
+    dustThreshold: 10000,
     feePerKb: 100000, // https://github.com/bitcoin/bitcoin/blob/v0.9.2/src/core.h#L151-L162
     estimateFee: estimateFee('auroracoin')
   }
