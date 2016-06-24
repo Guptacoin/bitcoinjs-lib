@@ -2,7 +2,7 @@ var assert = require('assert')
 var base58check = require('bs58check')
 var typeForce = require('typeforce')
 var networks = require('./networks')
-var scripts = require('./scripts')
+var scripts = require('./script')
 var crypto = require('./crypto')
 
 function findScriptTypeByVersion (version) {
