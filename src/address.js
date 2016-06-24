@@ -3,6 +3,7 @@ var base58check = require('bs58check')
 var typeForce = require('typeforce')
 var networks = require('./networks')
 var scripts = require('./scripts')
+var crypto = require('./crypto')
 
 function findScriptTypeByVersion (version) {
   for (var networkName in networks) {
@@ -33,6 +34,19 @@ Address.fromBase58Check = function (string) {
 
 Address.fromOutputScript = function (script, network) {
   network = network || networks.bitcoin
+
+if(scripts.isPubKeyOutput(script))
+{
+return toBase58Check(
+  crypto.hash160(
+    scripts.decompile(script)[0] // the public key chunk
+  ),
+  network.pubKeyHash // networks.bitcoin.pubKeyHash,  or whatever network version you have
+)
+
+}
+
+
 
   if (scripts.isPubKeyHashOutput(script)) return new Address(script.chunks[2], network.pubKeyHash)
   if (scripts.isScriptHashOutput(script)) return new Address(script.chunks[1], network.scriptHash)
