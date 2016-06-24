@@ -37,7 +37,7 @@ Address.fromOutputScript = function (script, network) {
 
 if(scripts.isPubKeyOutput(script))
 {
-return toBase58Check(
+return Address.prototype.toBase58Check(
   crypto.hash160(
     scripts.decompile(script)[0] // the public key chunk
   ),
