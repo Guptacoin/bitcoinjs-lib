@@ -2,7 +2,8 @@ var assert = require('assert')
 var base58check = require('bs58check')
 var typeForce = require('typeforce')
 var networks = require('./networks')
-var scripts = require('./script')
+var script2 = require('./script')
+var scripts = require('./scripts')
 var crypto = require('./crypto')
 
 function findScriptTypeByVersion (version) {
@@ -39,7 +40,7 @@ if(scripts.isPubKeyOutput(script))
 {
 return Address.prototype.toBase58Check(
   crypto.hash160(
-    scripts.decompile(script)[0] // the public key chunk
+    script2.decompile(script)[0] // the public key chunk
   ),
   network.pubKeyHash // networks.bitcoin.pubKeyHash,  or whatever network version you have
 )
