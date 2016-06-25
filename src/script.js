@@ -80,7 +80,7 @@ Script.decompile = function (buffer) {
     var opcode = buffer[i]
 
     // data chunk
-    if ((opcode > OPS.OP_0) && (opcode <= OPS.OP_PUSHDATA4)) {
+    if ((opcode > opcodes.OP_0) && (opcode <= opcodes.OP_PUSHDATA4)) {
       var d = bufferutils.readPushDataInt(buffer, i)
 
       // did reading a pushDataInt fail? empty script
