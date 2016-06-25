@@ -3,6 +3,7 @@ var bufferutils = require('./bufferutils')
 var crypto = require('./crypto')
 var typeForce = require('typeforce')
 var opcodes = require('./opcodes')
+var types = require('./types')
 
 function Script (buffer, chunks) {
   typeForce('Buffer', buffer)
