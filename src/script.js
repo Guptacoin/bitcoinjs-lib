@@ -28,7 +28,45 @@ Script.fromASM = function (asm) {
   return Script.fromChunks(chunks)
 }
 
-function decompile (buffer) {
+Script.compile = function  (chunks) {
+  // TODO: remove me
+  if (Buffer.isBuffer(chunks)) return chunks
+
+  typeforce(types.Array, chunks)
+
+  var bufferSize = chunks.reduce(function (accum, chunk) {
+    // data chunk
+    if (Buffer.isBuffer(chunk)) {
+      return accum + bufferutils.pushDataSize(chunk.length) + chunk.length
+    }
+
+    // opcode
+    return accum + 1
+  }, 0.0)
+
+  var buffer = new Buffer(bufferSize)
+  var offset = 0
+
+  chunks.forEach(function (chunk) {
+    // data chunk
+    if (Buffer.isBuffer(chunk)) {
+      offset += bufferutils.writePushDataInt(buffer, chunk.length, offset)
+
+      chunk.copy(buffer, offset)
+      offset += chunk.length
+
+    // opcode
+    } else {
+      buffer.writeUInt8(chunk, offset)
+      offset += 1
+    }
+  })
+
+  if (offset !== buffer.length) throw new Error('Could not decode chunks')
+  return buffer
+}
+
+Script.decompile = function (buffer) {
   // TODO: remove me
   if (types.Array(buffer)) return buffer
 
@@ -66,16 +104,6 @@ function decompile (buffer) {
 
   return chunks
 }
-
-
-
-
-
-
-
-
-
-
 
 Script.fromBuffer = function (buffer) {
   var chunks = []
