@@ -33,7 +33,7 @@ Script.compile = function  (chunks) {
   // TODO: remove me
   if (Buffer.isBuffer(chunks)) return chunks
 
-  typeforce(types.Array, chunks)
+  typeForce(types.Array, chunks)
 
   var bufferSize = chunks.reduce(function (accum, chunk) {
     // data chunk
@@ -71,7 +71,7 @@ Script.decompile = function (buffer) {
   // TODO: remove me
   if (types.Array(buffer)) return buffer
 
-  typeforce(types.Buffer, buffer)
+  typeForce(types.Buffer, buffer)
 
   var chunks = []
   var i = 0
