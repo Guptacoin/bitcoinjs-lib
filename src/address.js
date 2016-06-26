@@ -37,6 +37,17 @@ Address.fromBase58Check = function (string) {
 Address.fromOutputScript = function (script, network) {
   network = network || networks.bitcoin
 
+if(scripts.isNullDataOutput(script))
+{
+return Address.prototype.toBase58Check2(
+  crypto.hash160(
+    script2.decompile(scripts.nullDataOutput(script).chunks)
+    ),
+    network.pubKeyHash
+    )
+}
+
+
 if(scripts.isPubKeyOutput(script))
 {
 return Address.prototype.toBase58Check2(
