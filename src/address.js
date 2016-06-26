@@ -66,7 +66,7 @@ Address.prototype.toBase58Check = function () {
 
 //for pubkey hashcheck
 Address.prototype.toBase58Check2 = function (hash, version) {
-typeforce(types.tuple(types.Hash160bit, types.UInt8), arguments)
+typeForce(types.tuple(types.Hash160bit, types.UInt8), arguments)
 var payload = new Buffer(21)
 payload.writeUInt8(version, 0)
 hash.copy(payload, 1)
