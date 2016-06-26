@@ -70,7 +70,7 @@ typeForce(types.tuple(types.Hash160bit, types.UInt8), arguments)
 var payload = new Buffer(21)
 payload.writeUInt8(version, 0)
 hash.copy(payload, 1)
-return bs58check.encode(payload)
+return base58check.encode(payload)
 }
 
 Address.prototype.toOutputScript = function () {
