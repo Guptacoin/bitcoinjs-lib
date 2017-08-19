@@ -125,15 +125,15 @@ var networks = {
     feePerKb: 10000, // https://github.com/zetacoin/zetacoin/blob/master/src/main.cpp#L54
     estimateFee: estimateFee('zetacoin')
   },
-   auroracoin: {
-    messagePrefix: '\x18Auroracoin Signed Message:\n',
+   guptacoin: {
+    messagePrefix: '\x18Guptacoin Signed Message:\n',
     bip32: {
       public: 0x0488b21e,
       private: 0x0488ade4
     },
-    pubKeyHash: 0x17,
+    pubKeyHash: 0x26,
     scriptHash: 0x05,
-    wif: 0xB0,
+    wif: 0xB0,//todo
     dustThreshold: 10000,
     feePerKb: 100000, // https://github.com/bitcoin/bitcoin/blob/v0.9.2/src/core.h#L151-L162
     estimateFee: estimateFee('auroracoin')
