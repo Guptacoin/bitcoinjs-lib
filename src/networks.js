@@ -133,7 +133,7 @@ var networks = {
     },
     pubKeyHash: 0x26,
     scriptHash: 0x05,
-    wif: 0xB0,//todo
+    wif: 0xA6,https://github.com/Guptacoin/guptacoin/blob/master/src/chainparams.cpp#L76
     dustThreshold: 10000,
     feePerKb: 100000, // https://github.com/bitcoin/bitcoin/blob/v0.9.2/src/core.h#L151-L162
     estimateFee: estimateFee('auroracoin')
